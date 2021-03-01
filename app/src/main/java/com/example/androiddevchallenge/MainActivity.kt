@@ -108,6 +108,6 @@ fun MyApp(context: Context) {
 @Composable
 fun LightPreview() {
     MyTheme {
-        //MyApp()
+        // MyApp()
     }
 }
