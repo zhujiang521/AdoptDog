@@ -16,8 +16,8 @@
 package com.example.androiddevchallenge
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
@@ -72,13 +72,10 @@ fun MyApp(context: Context) {
                         .fillMaxWidth()
                         .padding(10.dp)
                         .clickable {
-                            Toast
-                                .makeText(
-                                    context,
-                                    "Congratulations on your successful adoption : ${item.name} !",
-                                    Toast.LENGTH_SHORT
-                                )
-                                .show()
+                            val intent = Intent(context, CatActivity::class.java)
+                            intent.putExtra(CatActivity.NAME, item.name)
+                            intent.putExtra(CatActivity.PHOTO, item.photo)
+                            context.startActivity(intent)
                         },
                     horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically,
