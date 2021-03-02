@@ -21,11 +21,11 @@ import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -75,25 +75,31 @@ fun Cat(context: Context, name: String, photo: Int) {
                     modifier = Modifier
                         .size(150.dp)
                         .shadow(
-                            3.dp, shape = RoundedCornerShape(
+                            3.dp,
+                            shape = RoundedCornerShape(
                                 5.dp
                             )
                         )
                 )
                 Text(
-                    text = "Dog name：$name", modifier = Modifier
+                    text = "Dog name：$name",
+                    modifier = Modifier
                         .padding(20.dp)
                 )
-                Button(modifier = Modifier
-                    .padding(20.dp), onClick = {
-                    Toast.makeText(
-                        context,
-                        "Congratulations on your successful adoption : $name !",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }) {
+                Button(
+                    modifier = Modifier
+                        .padding(20.dp),
+                    onClick = {
+                        Toast.makeText(
+                            context,
+                            "Congratulations on your successful adoption : $name !",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                ) {
                     Text(text = "Adopt")
                 }
-            })
+            }
+        )
     }
 }

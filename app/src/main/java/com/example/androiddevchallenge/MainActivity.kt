@@ -70,37 +70,40 @@ fun MyApp(context: Context) {
         add(Cat("Luci", R.drawable.dog9))
     }
     Surface(color = MaterialTheme.colors.background) {
-        LazyColumn(content = {
-            items(catList) { item ->
-                //列表内容
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp)
-                        .clickable {
-                            val intent = Intent(context, CatActivity::class.java)
-                            intent.putExtra(CatActivity.NAME, item.name)
-                            intent.putExtra(CatActivity.PHOTO, item.photo)
-                            context.startActivity(intent)
-                        },
-                    horizontalArrangement = Arrangement.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Image(
-                        painter = painterResource(id = item.photo),
-                        contentDescription = "",
+        LazyColumn(
+            content = {
+                items(catList) { item ->
+                    // 列表内容
+                    Row(
                         modifier = Modifier
-                            .size(100.dp)
-                            .shadow(
-                                3.dp, shape = RoundedCornerShape(
-                                    5.dp
+                            .fillMaxWidth()
+                            .padding(10.dp)
+                            .clickable {
+                                val intent = Intent(context, CatActivity::class.java)
+                                intent.putExtra(CatActivity.NAME, item.name)
+                                intent.putExtra(CatActivity.PHOTO, item.photo)
+                                context.startActivity(intent)
+                            },
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Image(
+                            painter = painterResource(id = item.photo),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(100.dp)
+                                .shadow(
+                                    3.dp,
+                                    shape = RoundedCornerShape(
+                                        5.dp
+                                    )
                                 )
-                            )
-                    )
-                    Text(text = "Dog name：${item.name}")
+                        )
+                        Text(text = "Dog name：${item.name}")
+                    }
                 }
             }
-        })
+        )
     }
 }
 
